@@ -48,7 +48,7 @@ def extraer_elementos():
 
 # MÉTODO PARA ALMACENAR EN UNA BASE DE DATOS
 def almacenar_bd(lista):
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('../generated/databases/peliculas.db')
     conn.text_factory = str
     conn.execute("DROP TABLE IF EXISTS PELICULA;")
     conn.execute('''CREATE TABLE PELICULA
@@ -109,7 +109,7 @@ def listar_peliculas_2(cursor): # título y fecha de estreno
     sc.config(command=lb.yview) # conecta la lista con la barra de desplazamiento
         
 def listar_todo(): # ejercicio 1.b
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('../generated/databases/peliculas.db')
     conn.text_factory = str
     cursor = conn.execute("SELECT TITULO, PAIS, DIRECTOR FROM PELICULA")
     conn.close
@@ -118,7 +118,7 @@ def listar_todo(): # ejercicio 1.b
     
 def buscar_titulo():
     def listar(event):
-        conn = sqlite3.connect('peliculas.db')
+        conn = sqlite3.connect('../generated/databases/peliculas.db')
         conn.text_factory = str
         cursor = conn.execute("SELECT TITULO, PAIS, DIRECTOR FROM PELICULA WHERE TITULO LIKE '%" + str(entry.get()) + "%'")
         conn.close
@@ -133,7 +133,7 @@ def buscar_titulo():
 
 def buscar_fecha():
     def listar(event):
-        conn = sqlite3.connect('peliculas.db')
+        conn = sqlite3.connect('../generated/databases/peliculas.db')
         conn.text_factory = str
         try:
             fecha = datetime.strptime(str(entry.get()), "%d-%m-%Y")
@@ -152,13 +152,13 @@ def buscar_fecha():
     
 def buscar_genero():
     def listar(event):
-        conn = sqlite3.connect('peliculas.db')
+        conn = sqlite3.connect('../generated/databases/peliculas.db')
         conn.text_factory = str
         cursor = conn.execute("SELECT TITULO, FECHA FROM PELICULA WHERE GENEROS LIKE '%" + str(entry.get()) + "%'")
         conn.close
         listar_peliculas_2(cursor)
         
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('../generated/databases/peliculas.db')
     conn.text_factory = str
     cursor = conn.execute("SELECT GENEROS FROM PELICULA")
     conn.close

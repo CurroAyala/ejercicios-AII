@@ -37,7 +37,7 @@ def extraer_elementos():
     return res
 
 def almacenar_db(dicc):
-    conn = sqlite3.connect('resultados.db')
+    conn = sqlite3.connect('../generated/databases/resultados.db')
     conn.text_factory = str
     conn.execute("DROP TABLE IF EXISTS RESULTADOS;")
     conn.execute('''CREATE TABLE RESULTADOS
@@ -64,7 +64,7 @@ def cargar():
         almacenar_db(d)
         
 def listar_todo():
-    conn = sqlite3.connect('resultados.db')
+    conn = sqlite3.connect('../generated/databases/resultados.db')
     conn.text_factory = str
     numero_jornadas = conn.execute("SELECT COUNT (DISTINCT JORNADA) FROM RESULTADOS;").fetchone()[0]
     
@@ -92,7 +92,7 @@ def listar_todo():
     sc.config(command=lb.yview)
     
 def buscar_jornada():
-    conn = sqlite3.connect('resultados.db')
+    conn = sqlite3.connect('../generated/databases/resultados.db')
     conn.text_factory = str
     def mostrar(evento):
         v = Toplevel()
@@ -124,7 +124,7 @@ def buscar_jornada():
     conn.close
     
 def estadisticas_jornada():
-    conn = sqlite3.connect('resultados.db')
+    conn = sqlite3.connect('../generated/databases/resultados.db')
     conn.text_factory = str
     def mostrar(evento):
         v = Toplevel()
@@ -170,7 +170,7 @@ def estadisticas_jornada():
     conn.close
     
 def buscar_goles(j:int, lo:str, vi:str):
-    conn = sqlite3.connect('resultados.db')
+    conn = sqlite3.connect('../generated/databases/resultados.db')
     conn.text_factory = str
     enlace = conn.execute("SELECT ENLACE FROM RESULTADOS WHERE JORNADA = ? AND LOCAl = ?;", (j,lo)).fetchone()[0]
     conn.close
@@ -197,7 +197,7 @@ def buscar_goles(j:int, lo:str, vi:str):
     
 
 def buscar_goles_ventana():
-    conn = sqlite3.connect('resultados.db')
+    conn = sqlite3.connect('../generated/databases/resultados.db')
     conn.text_factory = str
 
     def actualizar_locales(*args):

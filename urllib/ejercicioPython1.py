@@ -82,7 +82,7 @@ def buscar_fecha(l):
 
 
 if __name__ == "__main__":
-    fichero="noticias" # se le da nombre al fichero que se va a utilizar
+    fichero="../generated/xml/noticias" # se le da nombre al fichero que se va a utilizar
     if abrir_enlace("https://www.abc.es/rss/2.0/espana/andalucia/", fichero): # se llama al método abrir_enlace, si funciona
         l = extraer_lista(fichero) # se llama al método extraer_lista y se guarda en l
     if l: # si existe l, se llama a las funciones imprimir_lista y buscar_fecha

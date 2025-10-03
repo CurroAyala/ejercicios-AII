@@ -17,7 +17,7 @@ def extraer_datos(fichero):
 
 # MÉTODO PARA ALMACENAR LOS LIBROS DE LA LISTA EXTRAÍDA EN UNA BASE DE DATOS   
 def almacenar_bd(lista):
-    conn = sqlite3.connect('books.db') # abre o crea la base de datos "libros" y devuelve el objeto de conexión "con"
+    conn = sqlite3.connect('../generated/databases/books.db') # abre o crea la base de datos "libros" y devuelve el objeto de conexión "con"
     conn.text_factory = str # establece que todos los textos de SQLite sean leído como str en Python
     conn.execute("DROP TABLE IF EXISTS BOOKS") # ejecuta el comando SQL
     conn.execute('''CREATE TABLE BOOKS (ISBN CHAR(9) PRIMARY KEY,
@@ -40,7 +40,7 @@ def almacenar_bd(lista):
 def cargar():
     respuesta = messagebox.askyesno(title="Confirmar", message="¿Está seguro de que quiere recargar los datos?") # muestra un diálogo yes/no
     if respuesta:
-        libros = extraer_datos("books.csv")
+        libros = extraer_datos("../data/books.csv")
         if libros:
             almacenar_bd(libros)
 
@@ -62,7 +62,7 @@ def listar(cursor):
 
 # MÉTODO PARA LISTAR TODOS LOS DATOS
 def listar_completo(): 
-    conn = sqlite3.connect('books.db')
+    conn = sqlite3.connect('../generated/databases/books.db')
     conn.text_factory = str
     cursor = conn.execute("SELECT ISBN, TITLE, AUTHOR, YEAR FROM BOOKS")
     conn.close
@@ -87,7 +87,7 @@ def listar_editorial(cursor):
 # MÉTODO PARA LISTAR LOS DATOS ORDENADOS SEGÚN PREFERENCIA
 def listar_ordenado():
     def lista():
-        conn = sqlite3.connect('books.db')
+        conn = sqlite3.connect('../generated/databases/books.db')
         conn.text_factory = str
         if control.get() == 1: # según el valor de entrada
             cursor = conn.execute("SELECT ISBN, TITLE, AUTHOR, YEAR FROM BOOKS ORDER BY ISBN")
@@ -108,12 +108,12 @@ def listar_ordenado():
 # MÉTODO PARA BUSCAR POR EDITORIAL
 def buscar_editorial():
     def lista(event):
-        conn = sqlite3.connect('books.db') # conectarse a la base de datos
+        conn = sqlite3.connect('../generated/databases/books.db') # conectarse a la base de datos
         conn.text_factory = str
         cursor = conn.execute("SELECT TITLE, AUTHOR, PUBLISHER FROM BOOKS WHERE PUBLISHER='" + sb.get() + "'") # guarda en cursor la consulta sql
         conn.close
         listar_editorial(cursor) # llama a listar_editoriales
-    conn = sqlite3.connect('books.db')
+    conn = sqlite3.connect('../generated/databases/books.db')
     conn.text_factory = str
     cursor = conn.execute("SELECT DISTINCT PUBLISHER FROM BOOKS")
     editoriales = [i[0] for i in cursor] # construye una lista editoriales con la primera (y única) columna de cada fila del cursor
@@ -128,12 +128,12 @@ def buscar_editorial():
 # MÉTODO PARA BUSCAR POR TÍTULO
 def buscar_titulo():
     def lista(event):
-        conn = sqlite3.connect('books.db')
+        conn = sqlite3.connect('../generated/databases/books.db')
         conn.text_factory = str
         cursor = conn.execute("SELECT ISBN, TITLE, AUTHOR, YEAR FROM BOOKS WHERE TITLE LIKE '%" + entrada.get() + "%'")
         conn.close
         listar(cursor)
-    conn = sqlite3.connect('books.db')
+    conn = sqlite3.connect('../generated/databases/books.db')
     conn.text_factory = str
     
     v = Toplevel()

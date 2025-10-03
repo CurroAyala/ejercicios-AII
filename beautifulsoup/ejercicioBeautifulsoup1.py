@@ -32,7 +32,7 @@ def extraer_elementos():
     return lista
 
 def almacenar_bd():
-    conn = sqlite3.connect('vinos.db')
+    conn = sqlite3.connect('../generated/databases/vinos.db')
     conn.text_factory = str
     conn.execute("DROP TABLE IF EXISTS VINO")
     conn.execute("DROP TABLE IF EXISTS TIPOS_UVAS")
@@ -82,7 +82,7 @@ def almacenar_bd():
     conn.close()
 
 def listar_todos():
-    conn = sqlite3.connect('vinos.db')
+    conn = sqlite3.connect('../generated/databases/vinos.db')
     conn.text_factory = str
     cursor = conn.execute("SELECT NOMBRE, PRECIO, BODEGA, DENOMINACION FROM VINO")
     conn.close
@@ -91,13 +91,13 @@ def listar_todos():
 
 def buscar_por_denominacion():  
     def listar(event):
-            conn = sqlite3.connect('vinos.db')
+            conn = sqlite3.connect('../generated/databases/vinos.db')
             conn.text_factory = str
             cursor = conn.execute("SELECT NOMBRE, PRECIO, BODEGA, DENOMINACION FROM VINO WHERE DENOMINACION LIKE '%" + str(entry.get()) + "%'")
             conn.close
             listar_vinos(cursor)   
     
-    conn = sqlite3.connect('vinos.db')
+    conn = sqlite3.connect('../generated/databases/vinos.db')
     conn.text_factory = str
     cursor = conn.execute("SELECT DISTINCT DENOMINACION FROM VINO")
     denominaciones = [d[0] for d in cursor]
@@ -115,7 +115,7 @@ def buscar_por_denominacion():
 
 def buscar_por_precio():
     def listar(event):
-            conn = sqlite3.connect('vinos.db')
+            conn = sqlite3.connect('../generated/databases/vinos.db')
             conn.text_factory = str
             cursor = conn.execute("SELECT NOMBRE, PRECIO, BODEGA, DENOMINACION FROM VINO WHERE PRECIO <= ? ORDER BY PRECIO", (str(entry.get()),))
             conn.close
@@ -131,13 +131,13 @@ def buscar_por_precio():
 
 def buscar_por_uvas():
     def listar(event):
-            conn = sqlite3.connect('vinos.db')
+            conn = sqlite3.connect('../generated/databases/vinos.db')
             conn.text_factory = str
             cursor = conn.execute("SELECT NOMBRE, TIPO_UVAS FROM VINO where TIPO_UVAS LIKE '%" + str(tipo_uva.get()) + "%'")
             conn.close
             listar_por_uvas(cursor)
     
-    conn = sqlite3.connect('vinos.db')
+    conn = sqlite3.connect('../generated/databases/vinos.db')
     conn.text_factory = str
     cursor = conn.execute("SELECT NOMBRE FROM TIPOS_UVAS")
     
