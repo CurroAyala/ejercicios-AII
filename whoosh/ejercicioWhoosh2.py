@@ -105,10 +105,10 @@ def listar(results):
     sc.config(command=lb.yview)
         
     
-# Buscar una cadena de texto en un texto mayor
+# Buscar una cadena de texto en un texto mayor de forma exacta (comillas)
 def detalles():
     def listar_juegos(event):
-        myquery= '*'+str(entry.get()).strip()+'*'
+        myquery= '"'+str(entry.get()).strip()+'"'
         ix = open_dir(dirindex)
         try:
             with ix.searcher() as searcher:
@@ -125,10 +125,10 @@ def detalles():
     entry.bind("<Return>", listar_juegos)
     entry.pack(side=LEFT)
     
-# Buscar en todos los elementos del índice
+# Buscar en todos los elementos del índice para crear un spinbox con todos los valores posibles de un atributo
 def tematicas():
     def listar_juegos(event):
-        myquery = '*'+str(entry.get()).strip()+'*'
+        myquery = '"'+str(entry.get()).strip()+'"'
         ix = open_dir(dirindex)
         try:
             with ix.searcher() as searcher:
@@ -173,6 +173,7 @@ def precio():
     entry.bind("<Return>", listar_juegos)
     entry.pack(side=LEFT)
 
+# Filtrar viendo si un atributo incluye una entrada, de cualquier manera (asteriscos)
 def jugadores():
     def listar_juegos(event):
         myquery = '*'+str(entry.get()).strip()+'*'
