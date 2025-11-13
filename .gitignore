@@ -2,3 +2,4 @@
 .project
 .pydevproject
 pydevproject
+*/__pycache__/*
