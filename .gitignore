@@ -3,3 +3,4 @@
 .pydevproject
 pydevproject
 */__pycache__/*
+.venv
