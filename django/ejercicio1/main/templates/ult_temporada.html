@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+<h1> Partidos de la temporada {{temporada}}, agrupados por jornada </h1>
+{% endblock %}
+
+    {% block contenido %}
+        <ul>
+        {% for clave, valor in info.items %}
+            <li>{{ clave }}</li>
+                <ul>
+                {% for partido in valor %}
+                    <li>{{ partido.local }} {{ partido.goles_local }} - {{ partido.goles_visitante }} {{ partido.visitante }}</li>
+                {% endfor %}
+                </ul>
+        {% endfor %}
+    {% endblock %}

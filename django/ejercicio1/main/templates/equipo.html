@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+<h1> Detalles del equipo: {{equipo_nombre}}</h1>
+{% endblock %}
+
+    {% block contenido %}
+        <h2>Fundación</h2>
+        <p>{{fundacion}}</p>
+        <h2>Estadio</h2>
+        <p>{{estadio}}</p>
+        <h2>Aforo</h2>
+        <p>{{aforo}}</p>
+        <h2>Dirección</h2>
+        <p>{{direccion}}</p>
+    {% endblock %}

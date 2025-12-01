@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+<h1> Inicio </h1>
+{% endblock %}
+
+  {% block contenido %}
+    <h3>Actualmente tenemos registradas {{num_temporadas}} temporadas:</h3>
+    <ul>
+      {% for temporada in temporadas %}
+        <li>{{ temporada }}</li>
+      {% endfor %}
+  {% endblock %}

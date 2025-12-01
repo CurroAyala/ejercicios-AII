@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+  <meta charset='utf-8'>
+</head>
+<body>
+  <header> 
+  	{% block encabezado %}{% endblock %}
+
+ 			<dd><a href='/'>Inicio</a></dd>
+			<dd><a href='/carga'>Cargar la BD</a></dd>
+      <dd><a href='/ult_temporada'>Última temporada</a></dd>
+      <dd><a href='/equipos'>Equipos</a></dd>
+      <dd><a href='/estadios_aforo'>Estadios por aforo</a></dd>
+	<hr>
+  </header>
+  <section>
+    {% block contenido %}{% endblock %}
+  </section>
+  {% block pie %}{% endblock %} 
+</body>
+</html>

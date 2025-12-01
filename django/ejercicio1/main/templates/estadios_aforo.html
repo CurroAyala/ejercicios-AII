@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+<h1>Los cincos estadios con más aforo</h1>
+{% endblock %}
+
+    {% block contenido %}
+        <ul>
+        {% for e in equipos %}
+        <h2>{{e.nombre}}</h2>
+            <p>Aforo: {{e.aforo}}</p>
+        {% endfor %}
+    {% endblock %}

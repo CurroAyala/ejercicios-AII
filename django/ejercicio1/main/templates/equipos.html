@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+<h1> Listado de equipos registrados</h1>
+{% endblock %}
+
+    {% block contenido %}
+        <ul>
+        {% for e in equipos %}
+            <li><a href="{% url 'equipo' e %}">{{ e }}</a></li>
+        {% endfor %}
+    {% endblock %}
