@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+  <meta charset='utf-8'>
+</head>
+<body>
+  <header> 
+  	{% block encabezado %}{% endblock %}
+        <dd><a href='/'>Inicio</a></dd>
+	    <dd><a href='/carga'>Cargar la BD</a></dd>
+        <dd><a href='/vinos_denominacion'>Vinos por denominación</a></dd>
+        <dd><a href='/vinos_año'>Vinos por año</a></dd>
+        <dd><a href='/vinos_uva'>Vinos por uva</a></dd>
+	<hr>
+  </header>
+  <section>
+    {% block contenido %}{% endblock %}
+  </section>
+  {% block pie %}{% endblock %} 
+</body>
+</html>

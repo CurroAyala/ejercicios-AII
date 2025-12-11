@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+<h1>Vinos por año</h1>
+{% endblock %}
+
+    {% block contenido %}
+
+        <form id="form" method="post" action=''>{% csrf_token %}
+    		<fieldset>
+    			<legend>Búsqueda de vinos</legend>
+				{{form}}
+    			<BR><BR>
+
+    			<input type='submit' value='Realizar búsqueda'/>
+    		</fieldset>
+    	</form>
+
+        {% if vinos %}
+            <h2>Vinos encontrados:</h2>
+            <ul>
+            {% for vino in vinos %}
+                <li>{{ vino.nombre }} - Precio: {{ vino.precio }} € - Denominación {{ vino.denominacion.nombre }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+    {% endblock %}

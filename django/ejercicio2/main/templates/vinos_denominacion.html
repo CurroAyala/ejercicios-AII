@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+<h1>Vinos por denominación de origen</h1>
+{% endblock %}
+
+    {% block contenido %}
+        {%for clave, valor in vinos_denominacion.items%}
+            <h2>Denominación: {{ clave }} ({{ valor|length }} vinos)</h2>
+            <ul>
+            {% for vino in valor %}
+                <li>{{ vino.0 }} - Precio: {{ vino.1 }} €</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endblock %}
