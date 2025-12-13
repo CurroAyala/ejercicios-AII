@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+    <h1>Buscar películas por año</h1>
+{% endblock %}
+
+    {% block contenido %}
+
+        <form id="form" method="post" action=''>{% csrf_token %}
+    		<fieldset>
+    			<legend>Búsqueda de películas</legend>
+				{{form}}
+    			<BR><BR>
+
+    			<input type='submit' value='Realizar búsqueda'/>
+    		</fieldset>
+    	</form>
+
+        {% if peliculas %}
+            <h2>Películas encontradas:</h2>
+            <ul>
+            {% for peli in peliculas %}
+                <li>{{ peli.titulo }} - Fecha de estreno: {{ peli.fecha_estreno }} - <a href='{{ peli.imdb_url }}'>URL a IMDB</a></li>
+                    {% for categoria in peli.categorias.all %}
+                        <ul>{{ categoria.nombre }}</ul>
+                    {% endfor %}
+                <br>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+    {% endblock %}

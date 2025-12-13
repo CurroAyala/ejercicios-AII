@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block encabezado %} 
+	<h1>Mejores 50 películas</h1>
+{% endblock %}   
+
+{% block contenido %}
+
+    {% for peli in data %}
+        <h2>{{ peli.0 }}</h2>
+            <li>Puntuación media: {{ peli.1 }}</li>
+            <li>Número de puntuaciones: {{ peli.2 }}</li>
+            <li>Fecha de estreno: {{ peli.3 }}</li>
+    {% endfor %}	
+    
+{% endblock %}

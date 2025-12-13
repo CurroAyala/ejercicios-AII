@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block encabezado %} 
+	<h1>Identifíquese para poblar la Base de Datos</h1>
+{% endblock %}   
+
+{% block contenido %} 
+    	<form id="formulario" method="post" action=''>{% csrf_token %}
+    		<table>{{formulario}}</table>
+    		<p><input type='submit' value='Poblar BD'></p>	
+    	</form>
+{% endblock %}

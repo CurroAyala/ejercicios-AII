@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block encabezado %}
+    <h1>Buscar películas puntuadas por un usuario</h1>
+{% endblock %}
+
+    {% block contenido %}
+
+        <form id="form" method="post" action=''>{% csrf_token %}
+    		<fieldset>
+    			<legend>Búsqueda de películas</legend>
+				{{form}}
+    			<BR><BR>
+
+    			<input type='submit' value='Realizar búsqueda'/>
+    		</fieldset>
+    	</form>
+
+        {% if data %}
+            <h2>Películas puntuadas por el usuario {{ idUsuario }}:</h2>
+            <ul>
+            {% for clave, valor in data.items %}
+                <li>{{ clave }} - Puntuación dada: {{ valor }}</li></li>
+                <br>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+    {% endblock %}

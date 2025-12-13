@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block encabezado %} 
+	<h1>Usuarios por ocupación</h1>
+{% endblock %}   
+
+{% block contenido %}
+
+    {% for clave,valor in data.items %}
+        <h2>{{ clave }}</h2>
+
+        {% for usuario in valor %}
+            <li>Usuario {{ usuario.idUsuario }}: {{ usuario.edad }} años - Código postal: {{ usuario.codigo_postal }}</li>
+        {% endfor %}
+    {% endfor %}	
+    
+{% endblock %}
