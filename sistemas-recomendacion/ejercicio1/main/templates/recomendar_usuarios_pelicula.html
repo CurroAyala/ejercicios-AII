@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+    <h1>Recomendar películas a un usuario</h1>
+{% endblock %}
+
+    {% block contenido %}
+
+        <form id="formulario" method="post" action=''>{% csrf_token %}
+    		<fieldset>
+    			<legend>Buscar pelicula</legend>
+    			{{formulario}}
+    			<BR><BR>
+
+    			<input type='submit' value='Realizar búsqueda'/>
+    		</fieldset>
+    	</form>
+
+        <hr>
+
+        {% if items %}
+			<h4>{{ pelicula }} es más recomendable para:</h4>
+			{% for usuario,puntuacion in items %}
+			    <li>Usuario {{ usuario }}</li>
+			{% endfor %}
+		{% endif %}
+
+    {% endblock %}

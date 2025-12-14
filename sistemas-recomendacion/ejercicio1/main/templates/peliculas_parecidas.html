@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+    <h1>Obtener películas parecidas</h1>
+{% endblock %}
+
+    {% block contenido %}
+
+        <form id="formulario" method="post" action=''>{% csrf_token %}
+    		<fieldset>
+    			<legend>Buscar película</legend>
+    			{{form}}
+    			<BR><BR>
+
+    			<input type='submit' value='Realizar búsqueda'/>
+    		</fieldset>
+    	</form>
+
+        <hr>
+
+        {% if items %}
+			<h4>Las tres películas más parecidas a {{ pelicula }} son:</h4>
+			{% for pelicula, similitud in items %}
+			    <dd>Título: {{pelicula.titulo}} - Similitud: {{ similitud | floatformat:"2" }}</dd>    
+			{% endfor %}
+
+			</dl>
+
+		{% endif %}
+
+    {% endblock %}

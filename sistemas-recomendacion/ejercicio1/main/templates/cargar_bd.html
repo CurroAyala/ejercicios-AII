@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+    <h1>Base de datos cargada</h1>
+{% endblock %}
+
+    {% block contenido %}
+        <h2>La base de datos se ha cargado correctamente.</h2>
+        <p>Se han cargado {{num_ocupaciones}} ocupaciones.</p>
+        <p>Se han cargado {{num_usuarios}} usuarios.</p>
+        <p>Se han cargado {{num_categorias}} categorias.</p>
+        <p>Se han cargado {{num_peliculas}} peliculas.</p>
+        <p>Se han cargado {{num_puntuaciones}} puntuaciones.</p>
+    {% endblock %}

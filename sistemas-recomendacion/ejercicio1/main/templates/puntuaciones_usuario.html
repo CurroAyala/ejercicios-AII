@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block encabezado %}
+    <h1>Obtener películas parecidas</h1>
+{% endblock %}
+
+    {% block contenido %}
+
+        <form id="formulario" method="post" action=''>{% csrf_token %}
+    		<fieldset>
+    			<legend>Buscar usuario</legend>
+    			{{formulario}}
+    			<BR><BR>
+
+    			<input type='submit' value='Realizar búsqueda'/>
+    		</fieldset>
+    	</form>
+
+        <hr>
+
+        {% if puntuaciones %}
+			<h4>Las puntuaciones del usuario {{ usuario }} son:</h4>
+			{% for p in puntuaciones %}
+			    <li>Película: {{ p.pelicula }} - Puntuacion: {{ p.puntuacion }}</li>  
+			{% endfor %}
+
+		{% endif %}
+
+    {% endblock %}
